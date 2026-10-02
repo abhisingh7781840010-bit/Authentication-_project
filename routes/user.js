@@ -8,7 +8,7 @@ router.post("/login",login);
 router.post("/signup",signup);
 
 //testing protected route for middle ware
-router.get("/test" , auth , (req,res)=>{
+router.get("/test",auth,(req,res)=>{
     res.json({
         success:true,
         message:"welcome to the protected route of TESTS",

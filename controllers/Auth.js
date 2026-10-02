@@ -30,7 +30,6 @@ exports.signup = async (req,res)=>{
                success:false,   //true
                message:"err in hashing the password"
            });
-
        }
 
        const user= await User.create({  
@@ -92,7 +91,7 @@ exports.login=async(req,res)=>{
             user.token=token;
             user.password=undefined; 
             const option={
-               expires:new Date(Date.now() + 10*60*1000),
+               expires:new Date(Date.now() + 3*24*60*60*1000),
                httpOnly:true,
             }               
        //cookies
