@@ -1,7 +1,7 @@
 
 const bcrypt=require("bcrypt");
 const User = require("../model/user");
-//const user = require("../model/user");
+
 const jwt= require("jsonwebtoken");
 const { options } = require("../routes/user");
 require("dotenv").config();
@@ -38,7 +38,7 @@ exports.signup = async (req,res)=>{
          return res.status(200).json({
             success:true,
             message:"user created successfully",
-            
+            data:user
          });
 
     }
@@ -90,7 +90,8 @@ exports.login=async(req,res)=>{
             user=user.toObject();                      
             user.token=token;
             user.password=undefined; 
-            const option={
+
+            const options ={
                expires:new Date(Date.now() + 3*24*60*60*1000),
                httpOnly:true,
             }               

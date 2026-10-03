@@ -20,7 +20,10 @@ app.use("/api/v1",user);
 
 //cloudinary
 const fileupload=require("express-fileupload");
-app.use(fileupload());
+app.use(fileupload({
+    useTempFiles:true,
+    tempFileDir:'/tmp/' 
+}));
 
  const db=require("./config/database");
  //db.connect();
@@ -29,6 +32,7 @@ const cloudinary=require("./config/cloudinary");
 cloudinary.cloudinaryConnect();
 
 const Upload=require("./routes/FileUpload");
+// const fileUpload = require("express-fileupload");
 app.use('/api/v1/upload',Upload);
 
  //activate
